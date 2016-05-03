@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        .done{text-decoration: line-through;  color: #ccc;}
+    </style>
+</head>
+
+<body>
+    <h1>Todo-list</h1>
+
+    <div>
+        <form name="form" ng-submit="addTodo()">
+            <input type="text" name="newtodo" ng-model="newtodo" required />
+            <button ng-disabled="form.$invalid">Go</button>
+        </form>
+        <br/>
+        <button ng-click="clearCompleted()">Clear Completed</button>
+
+        <br/>
+        <h3>Todo tasks</h3>
+        <ul>
+            <li ng-repeat="todo in todos">
+                <input type="checkbox" ng-model="todo.done" />
+                <span ng-class="{'done':todo.done}">{{todo.title}}</span>
+            </li>
+        </ul>
+    </div>
+
+    <hr/>
+    <br/><br/>
+    <div id="objectives" >
+        <form name="objectives_form" ng-submit="addObjective()">
+            <input type="text" name="add_objective" ng-model="new_objective" required />
+            <button ng-disabled="objectives_form.$invalid">Add Objective</button>
+        </form>
+        <br/>
+
+        <h3>Obejectives List</h3>
+
+        <ul>
+            <li ng-repeat="objective in objectives">
+                <input type="checkbox" ng-model="objective.done" />
+                <span ng-class="{'done':objective.done}">{{objective.title}}</span>
+            </li>
+        </ul>
+
+        <button ng-click="clearObjectives()">Clear Objectives</button>
+    </div>
+
+
+
+</body>
+
+</html>
